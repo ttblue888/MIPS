@@ -1,0 +1,23 @@
+`include "F:/modelsim/mips/def.v"
+module PC_Sel(op,funct,PC_,GPRA,PC);
+		input [5:0] op;
+		input [5:0] funct;
+		input [31:2] PC_;
+		input [31:0] GPRA;
+		output [31:2] PC;
+		reg [31:2] PC;
+always@(* )
+		begin
+			if(op==`op_r)
+			begin
+				if(funct==`funct_jalr)
+				  PC=GPRA[31:2]-1;
+			  else if(funct==`funct_jr)
+			  	PC=GPRA[31:2]-2;
+			  else
+				  PC=PC_;
+			end
+			else
+				  PC=PC_;
+		end
+endmodule

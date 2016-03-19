@@ -1,0 +1,8 @@
+module IM(
+    input wire[31:0] addr,
+    output reg[31:0] do
+);
+
+    reg [31:0] mem[1023:0];
+    assign do=mem[addr];
+endmodule
